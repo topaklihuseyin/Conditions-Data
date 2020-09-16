@@ -30,6 +30,23 @@ Then, define the correct set of condition data by mentioning the Global Tag in t
 process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
 process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 ```
+Note that **this only works in the "CMS-OpenData-1.1.2" or a higher version** of the 2010 CMS Open Data VM.
+
+### **For 2011**
+The global tag is FT_53_LV5_AN1. To access the condition database, first, set the symbolic links:
+```html
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_53_LV5_AN1_RUNA FT_53_LV5_AN1
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_53_LV5_AN1_RUNA.db FT_53_LV5_AN1_RUNA.db
+```
+Make sure the `cms-opendata-conddb.cern.ch` directory has actually expanded in your VM. One way of doing this is executing:
+
+```html
+ls -l
+ls -l /cvmfs/
+```
+
+
+
 
 
 
