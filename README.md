@@ -44,8 +44,19 @@ Make sure the `cms-opendata-conddb.cern.ch` directory has actually expanded in y
 ls -l
 ls -l /cvmfs/
 ```
+Then, define the correct set of condition data by mentioning the Global Tag in the configuration file of the job.
 
+```html
+#globaltag for 2011 collision data
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_53_LV5_AN1_RUNA.db')
+process.GlobalTag.globaltag = 'FT_53_LV5_AN1::All'
+```
+Note that two sets of condition data for 2011 data are provided:
 
+  - FT_53_LV5_AN1 valid for the full range of 2011 data taking
+  - FT_53_LV5_AN1_RUNA valid for the run range of 2011 RunA (public data)
+It is convenient to use FT_53_LV5_AN1_RUNA as instructed above, it makes the starting time of the first job somewhat faster.  
+ 
 
 
 
