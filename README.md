@@ -55,6 +55,7 @@ Note that two sets of condition data for 2011 data are provided:
 
   - FT_53_LV5_AN1 valid for the full range of 2011 data taking
   - FT_53_LV5_AN1_RUNA valid for the run range of 2011 RunA (public data)
+  
 It is convenient to use FT_53_LV5_AN1_RUNA as instructed above, it makes the starting time of the first job somewhat faster.  
  
 
