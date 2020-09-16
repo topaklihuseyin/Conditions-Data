@@ -58,8 +58,32 @@ Note that two sets of condition data for 2011 data are provided:
   
 It is convenient to use FT_53_LV5_AN1_RUNA as instructed above, it makes the starting time of the first job somewhat faster.  
  
+### **For 2012**
+The global tag is FT53_V21A_AN6. To access the condition database, first, set the symbolic links:
 
+```html
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL FT53_V21A_AN6
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL.db FT53_V21A_AN6_FULL.db
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL FT53_V21A_AN6_FULL
+```
+Note the third additional symbolic link, which is needed for the 2012 data. Make sure the `cms-opendata-conddb.cern.ch` directory has actually expanded in your VM. One way of doing this is executing:
 
+```html
+ls -l
+ls -l /cvmfs/
+```
+Then, define the correct set of condition data by mentioning the Global Tag in the configuration file of the job.
+```html
+#globaltag for 2012 collision data
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL.db')
+process.GlobalTag.globaltag = 'FT53_V21A_AN6::All'
+```
+Note that three sets of condition data for 2011 data are provided:
+ - FT53_V21A_AN6_FULL valid for the full range of 2012 data taking
+ - FT53_V21A_AN6 valid for the run range of 2012 RunB (public data)
+ - FT53_V21A_AN6_RUNC valid for the run range of 2012 RunC (public data)
 
+It is convenient to use FT53_V21A_AN6_FULL as instructed above, as you will not need to load RunB and RunC condition data separately. You should use the CMS Open Data VM version CMS-OpenData-1.5.1.ova (or CMS-Open-Data-1.3.0.ova), which has a large enough cache area.
+ 
 
 
