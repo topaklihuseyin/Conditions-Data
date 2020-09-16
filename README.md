@@ -14,4 +14,23 @@ Note that when you need to access the condition database, the first time you run
 
 ## Collision data
 
-### **For 2010** the global tag tag available in the `/cvmfs` area is FT_R_42_V10A. 
+### **For 2010** 
+The global tag available in the `/cvmfs` area is FT_R_42_V10A. 
+When using the "CMS-OpenData-1.1.2" VM or a higher version, it is recommended reading the condition data from there. 
+First, set the symbolic links:
+
+```html
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
+```
+Then, define the correct set of condition data by mentioning the Global Tag in the configuration file of the job.
+
+```html
+#global tag
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
+process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
+```
+
+
+
+
