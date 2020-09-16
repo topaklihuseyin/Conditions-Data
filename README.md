@@ -85,5 +85,62 @@ Note that three sets of condition data for 2011 data are provided:
 
 It is convenient to use FT53_V21A_AN6_FULL as instructed above, as you will not need to load RunB and RunC condition data separately. You should use the CMS Open Data VM version CMS-OpenData-1.5.1.ova (or CMS-Open-Data-1.3.0.ova), which has a large enough cache area.
  
+ ## Montecarlo data
+ 
+ ### **For 2010** 
+ 
+ The global tag is START42_V17B. To access the condition database, first, set the symbolic links:
+ 
+```html
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START42_V17B START42_V17B
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START42_V17B.db START42_V17B.db
+```
+Then, define the correct set of condition data by mentioning the Global Tag in the configuration file of the job.
 
+```html
+#globaltag for 2010 MC
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/START42_V17B.db')
+process.GlobalTag.globaltag = 'START42_V17B::All'
+```
+Note that **this only works in the "CMS-OpenData-1.1.2" or a higher version** of the 2010 CMS Open Data VM. 
+ 
+### **For 2011** 
+The global tag is START53_LV6A1. To access the condition database, first, set the symbolic links:
 
+```html
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START53_LV6A1 START53_LV6A1
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START53_LV6A1.db START53_LV6A1.db
+```
+Make sure the `cms-opendata-conddb.cern.ch` directory has actually expanded in your VM. One way of doing this is executing:
+
+```html
+ls -l
+ls -l /cvmfs/
+```
+Then, define the correct set of condition data by mentioning the Global Tag in the configuration file of the job.
+
+```html
+#globaltag for 2011 MC
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/START53_LV6A1.db')
+process.GlobalTag.globaltag = 'START53_LV6A1::All'
+```
+### **For 2012**
+The global tag is START53_V27. To access the condition database, first, set the symbolic links:
+
+```html
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START53_V27 START53_V27
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START53_V27.db START53_V27.db
+```
+Make sure the `cms-opendata-conddb.cern.ch` directory has actually expanded in your VM. One way of doing this is executing:
+
+```html
+ls -l
+ls -l /cvmfs/
+```
+Then, define the correct set of condition data by mentioning the Global Tag in the configuration file of the job.
+
+```html
+#globaltag for 2012 MC
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/START53_V27.db')
+process.GlobalTag.globaltag = 'START53_V27::All'
+```
